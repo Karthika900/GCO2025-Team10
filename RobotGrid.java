@@ -31,6 +31,7 @@ public class RobotGrid {
         };
 
         int safeCount = 0;
+         int LIMIT = 9999;
 
         while (!queue.isEmpty()) {
             int[] current = queue.poll();
@@ -43,6 +44,7 @@ public class RobotGrid {
             for (int[] dir : directions) {
                 int newX = x + dir[0], newY = y + dir[1];
                 String key = newX + "," + newY;
+                if (Math.abs(newX) > LIMIT || Math.abs(newY) > LIMIT) continue;
                 if (!visited.contains(key)) {
                     visited.add(key);
                     queue.offer(new int[]{newX, newY});
